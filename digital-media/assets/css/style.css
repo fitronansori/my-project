@@ -122,13 +122,96 @@ body {
   font-weight: var(--weight-regular);
 }
 
-/*-----------------------------------*\
-  #REUSED STYLE
-\*-----------------------------------*/
+body.nav-active {
+  overflow: hidden;
+}
 
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
+/* REUSED STYLE */
+
+.container {
+  padding-inline: 16px;
+}
+
+/* HEADER */
+
+.header .btn {
+  display: none;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-block: 30px;
+  z-index: 4;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo img {
+  width: 160px;
+}
+
+.nav-open-btn {
+  color: var(--text-white);
+  font-size: 3rem;
+}
+
+.nav-open-btn.active .menu-icon,
+.nav-open-btn .close-icon {
+  display: none;
+}
+
+.nav-open-btn .menu-icon,
+.nav-open-btn.active .close-icon {
+  display: block;
+}
+
+.navbar {
+  position: absolute;
+  top: 100%;
+  right: 16px;
+  background-color: var(--bg-vivid-violet);
+  border-radius: var(--radius-24);
+  color: var(--text-white);
+  padding: 16px 30px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 500ms var(--cubic-out);
+  z-index: 1;
+}
+
+.navbar.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-15px);
+}
+
+.navbar-list > li:not(:last-child) {
+  margin-block-end: 5px;
+}
+
+.navbar-link {
+  font-weight: var(--weight-medium);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.overlay.active {
+  pointer-events: all;
+}
 
 /*-----------------------------------*\
   #HERO
