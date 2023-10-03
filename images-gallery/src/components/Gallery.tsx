@@ -13,7 +13,7 @@ export default async function Gallery() {
         images === undefined ? (
           <h1>Not Found</h1>
         ) : (
-          images?.photos.map((photo) => (
+          images?.photos.map((photo: any) => (
             <div key={photo.id} className="h-64 bg-gray-200 rounded-xl">
               <Image
                 src={photo.src.large}
