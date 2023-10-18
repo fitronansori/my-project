@@ -11,6 +11,7 @@ const Logo = () => {
       alt="airbnb logo"
       width="100"
       height="100"
+      priority={true}
       className="hidden md:block cursor-pointer"
     />
   );
