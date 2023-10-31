@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./Footer/Footer";
+import Header from "./Navbar/Header";
 
 const MainLayout = ({ children }) => {
   return (
