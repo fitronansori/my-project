@@ -8,6 +8,10 @@ export default {
         "blue-dark": "#183B56",
         "dark-green": "#0D2436",
       },
+      fontFamily: {
+        opensans: ["Open Sans", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

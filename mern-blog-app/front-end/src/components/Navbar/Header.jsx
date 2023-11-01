@@ -1,18 +1,44 @@
+import { useState } from "react";
 import { Logo } from "../../constants/images";
 import Button from "../Button";
 import NavLinks from "./NavLinks";
+import { BiMenuAltRight } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Header = () => {
+  const [visible, setVisible] = useState(false);
+
+  const navToggle = () => {
+    setVisible((prevVisible) => (prevVisible = !prevVisible));
+  };
   return (
     <header className="container mx-auto px-5 flex justify-between items-center py-4">
       <div className="">
-        <img src={Logo} alt="Logo" className="" />
+        <img src={Logo} alt="Logo" className="h-5 sm:h-7" />
       </div>
 
-      <div className="flex gap-x-5">
+      <button className="lg:hidden z-50">
+        {!visible ? (
+          <BiMenuAltRight
+            className="text-2xl text-blue-dark"
+            onClick={navToggle}
+          />
+        ) : (
+          <AiOutlineClose
+            className="text-2xl text-blue-dark"
+            onClick={navToggle}
+          />
+        )}
+      </button>
+
+      <div
+        className={`w-full lg:w-auto mt-[60px] lg:mt-0 flex flex-col justify-center items-center lg:justify-end lg:flex-row fixed bottom-0 top-0 lg:static gap-x-9 gap-y-6 z-[49] bg-blue-dark lg:bg-transparent transition-all duration-300 ease-in-out
+        ${visible ? "right-0" : "-right-full"}
+        `}
+      >
         <NavLinks />
         <Button
-          className="border-2 border-blue px-6 py-2 rounded-full text-blue hover:bg-blue hover:text-white transition-all duration-300 ease-in-out"
+          className="border-2 border-blue px-6 py-2 rounded-full w-fit text-white font-bold bg-blue lg:bg-transparent lg:text-blue hover:scale-110 lg:hover:bg-blue hover:text-white transition-all duration-300 ease-in-out"
           label="Sign In"
         />
       </div>
