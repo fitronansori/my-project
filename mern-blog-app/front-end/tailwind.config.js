@@ -7,6 +7,7 @@ export default {
         blue: "#1565D8",
         "blue-dark": "#183B56",
         "dark-green": "#0D2436",
+        light: "#5A7184",
       },
       fontFamily: {
         opensans: ["Open Sans", "sans-serif"],

@@ -1,3 +1,3 @@
 import Logo from "../assets/images/Logo.svg";
-
-export { Logo };
+import HeroImg from "../assets/images/LiveChat.svg";
+export { Logo, HeroImg };
