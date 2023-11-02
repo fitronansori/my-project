@@ -17,7 +17,7 @@ const NavLinks = () => {
           key={link.id}
           className="flex flex-col lg:flex-row gap-y-5 items-center text-white lg:text-dark-green "
         >
-          <li className="relative group">
+          <li className="relative group cursor-pointer">
             {link.type === "link" ? (
               <a
                 href="/"
