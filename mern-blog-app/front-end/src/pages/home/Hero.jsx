@@ -7,12 +7,12 @@ const Hero = () => {
     <section className="container mx-auto p-5 flex flex-col lg:flex-row max-h-screen">
       <div className="left mt-10 lg:w-1/2">
         <div className="flex justify-center items-center lg:justify-start">
-          <h1 className="font-roboto text-4xl text-center font-bold text-blue-dark md:text-5xl lg:text-6xl lg:text-start lg:max-w-[500px]">
+          <h1 className="font-roboto text-4xl text-center font-bold text-blue-dark md:text-5xl lg:text-5xl xl:text-6xl lg:text-start lg:max-w-[500px]">
             Read the most interesting articles
           </h1>
         </div>
         <div className="flex justify-center items-center lg:justify-start">
-          <p className="text-light lg:text-blue-dark mt-4 text-center sm:text-xl lg:text-start md:max-w-[500px]">
+          <p className="text-light lg:text-blue-dark mt-4 lg:mt-6 xl:mt-10 text-center sm:text-xl lg:text-start md:max-w-[500px]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua
           </p>
