@@ -1,12 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 const Logo = () => {
-  //   const router = useRouter();
+  const router = useRouter();
+
+  const handleClick = useCallback(() => {
+    router.push("/");
+  }, [router]);
   return (
     <Image
+      onClick={handleClick}
       src="/images/logo.png"
       alt="airbnb logo"
       width="100"
