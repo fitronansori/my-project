@@ -18,10 +18,12 @@ import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/hooks/useLoginModal";
 
 const RegisterModal = () => {
   // use the register modal from the useRegisterModal hook
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   // set loading state
   const [isloading, setIsLoading] = useState(false);
 
@@ -98,6 +100,11 @@ const RegisterModal = () => {
     signIn("google");
   }, []);
 
+  const loginPush = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -117,7 +124,7 @@ const RegisterModal = () => {
         <div className="flex flex-row items-center justify-center gap-2">
           <div>Already have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={loginPush}
             className="cursor-pointer hover:underline text-neutral-800"
           >
             Log in

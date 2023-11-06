@@ -1,7 +1,6 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import axios from "axios";
 import { useCallback, useState } from "react";
 import {
   FieldValues,
@@ -95,6 +94,11 @@ const LoginModal = () => {
     signIn("google");
   }, []);
 
+  const registerPush = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -112,12 +116,12 @@ const LoginModal = () => {
       />
       <div className="text-center mt-4 font-light">
         <div className="flex flex-row items-center justify-center gap-2">
-          <div>Already have an account?</div>
+          <div>Don&apos;t have an account?</div>
           <div
-            onClick={registerModal.onClose}
+            onClick={registerPush}
             className="cursor-pointer hover:underline text-neutral-800"
           >
-            Log in
+            Register
           </div>
         </div>
       </div>
