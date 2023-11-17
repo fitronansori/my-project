@@ -1,7 +1,7 @@
 import prisma from "@/libs/prismadb";
 
 type IParams = {
-  listingId: string;
+  listingId?: string;
   userId?: string;
   authorId?: string;
 };
