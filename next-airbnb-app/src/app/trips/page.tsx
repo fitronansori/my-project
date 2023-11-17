@@ -5,9 +5,7 @@ import TripsClient from "./TripsClient";
 
 const TripsPage = async () => {
   const currentUser = await getCurrentUser();
-  const reservations = await getReservations({
-    userId: currentUser?.id,
-  });
+  const reservations = await getReservations({ userId: currentUser?.id });
 
   if (!currentUser) {
     return (
