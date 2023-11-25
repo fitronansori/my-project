@@ -8,6 +8,7 @@ import ToasterProvider from "@/providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "@/components/modals/RentModal";
 import SearchModal from "@/components/modals/SearchModal";
+import { Suspense } from "react";
 
 const font = Nunito({
   subsets: ["latin"],
