@@ -1,12 +1,22 @@
-import { Button } from "@/components/ui/button"
+"use client";
 
-const Home = () => {
+import useStoreModal from "@/hooks/useStoreModal";
+import { useEffect } from "react";
+
+const SetupPage = () => {
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    if (!isOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
+
   return (
-    <div className="m-5">
-      <Button size={"default"} variant={"default"}>
-        Click me
-      </Button>
+    <div className="p4">
+      adada
     </div>
   )
 }
-export default Home
+export default SetupPage
