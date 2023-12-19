@@ -13,10 +13,6 @@ const SetupPage = () => {
     }
   }, [isOpen, onOpen]);
 
-  return (
-    <div className="p4">
-      adada
-    </div>
-  )
-}
-export default SetupPage
+  return null;
+};
+export default SetupPage;
