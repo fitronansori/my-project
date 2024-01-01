@@ -28,9 +28,9 @@ const Navbar = () => {
 
       {/* Right Links */}
       <div className="hidden md:flex gap-4 items-center justify-end flex-1">
-        <div className="flex items-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md md:absolute top-3 right-2 lg:static">
+        <div className="flex items-center justify-center gap-2 cursor-pointer bg-orange-300 px-1 rounded-md md:absolute md:w-36 top-3 right-2 lg:static">
           <Image src="/phone.png" alt="" width={20} height={20} />
-          <span>123 123</span>
+          <span>123 123 123</span>
         </div>
 
         {!user ? (

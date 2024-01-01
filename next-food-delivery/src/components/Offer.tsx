@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CountDown from "./CountDown";
+// import CountDown from "./CountDown";
 
 const Offer = () => {
   return (
