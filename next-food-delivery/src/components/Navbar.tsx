@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Nav Links */}
-      <div className="block md:hidden">
+      <div className="md:hidden">
         <Menu />
       </div>
 
@@ -41,7 +41,9 @@ const Navbar = () => {
         ) : (
           <Link href="/orders">Orders</Link>
         )}
-        <CartIcon />
+        <div>
+          <CartIcon />
+        </div>
       </div>
     </div>
   );

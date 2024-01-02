@@ -1,5 +1,9 @@
 import Image from "next/image";
-// import CountDown from "./CountDown";
+import dynamic from "next/dynamic";
+
+const CountDown = dynamic(() => import("@/components/CountDown"), {
+  ssr: false,
+});
 
 const Offer = () => {
   return (
@@ -13,7 +17,7 @@ const Offer = () => {
           Progressively simplify effective e-toilers and process-centric method
           of empowerment. Quickly pontificate parallel.
         </p>
-        {/* <CountDown /> */}
+        <CountDown />
         <button className="bg-red-500 rounded-md py-3 px-6 hover:bg-opacity-80">
           Order Now
         </button>
