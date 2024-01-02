@@ -7,7 +7,7 @@ type ButtonProps = {
 const Button: React.FC<ButtonProps> = ({ text, onClick, type }) => {
   return (
     <button
-      className={`px-5 py-2 rounded-md text-[18px] font-medium w-28 ${
+      className={`px-5 py-2 rounded-md text-[18px] font-medium w-36 ${
         type === "primary"
           ? "bg-blue-500 text-white"
           : type === "secondary"
