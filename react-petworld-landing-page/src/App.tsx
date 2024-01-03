@@ -1,4 +1,4 @@
-import Featured from "./components/features/Featured";
+import Featured from "./components/featured/Featured";
 import Hero from "./components/hero/Hero";
 import Logos from "./components/logos/Logos";
 
@@ -15,7 +15,7 @@ const App = () => {
         <Logos />
       </section>
 
-      <section className="">
+      <section className="lg:h-[500px] flex justify-center items-center">
         <Featured />
       </section>
     </div>
