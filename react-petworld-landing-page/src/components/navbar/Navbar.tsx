@@ -17,7 +17,7 @@ const Navbar = () => {
 
         <div className="hidden w-fit md:flex md:justify-center md:items-center md:gap-2">
           <Button text="Sign Up" type="none" />
-          <Button text="Login" type="primary" />
+          <Button text="Sign In" type="primary" />
         </div>
       </nav>
     </div>
