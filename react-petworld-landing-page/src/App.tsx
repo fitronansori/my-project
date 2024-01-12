@@ -50,6 +50,7 @@ const App = () => {
           {/* End Contact Section */}
         </div>
       </main>
+      <hr className="border-t-2 border-y-gray-500" />
       <Footer />
     </>
   );
