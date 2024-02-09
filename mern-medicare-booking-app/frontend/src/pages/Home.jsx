@@ -1,4 +1,5 @@
 import Hero from "../components/Hero/Hero";
+import OurServices from "../components/Services/OurServices";
 import Services from "../components/Services/Services";
 import About from "../components/about/About";
 
@@ -8,6 +9,7 @@ const Home = () => {
       <Hero />
       <Services />
       <About />
+      <OurServices />
     </>
   );
 };

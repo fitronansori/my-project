@@ -18,18 +18,18 @@ const About = () => {
 
           <div className="w-full lg:w-1/2 xl:w-[670px] order-1 lg:order-2 text-center lg:text-start">
             <h2 className="heading ">Proud to be one of the nation best</h2>
-            <p className="text__para">
+            <div className="text__para">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi ex
               necessitatibus nam animi, similique fuga architecto adipisci?
               Eveniet iusto voluptate, in voluptas placeat qui recusandae? Earum
               asperiores magnam incidunt perspiciatis.
-              <p className="text-para mt-[30px]">
+              <div className="text-para mt-[30px]">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
                 eius iusto odit cum praesentium fugiat tenetur illum doloremque
                 qui? Quae recusandae quos praesentium, voluptatibus suscipit
                 laboriosam quis itaque natus aspernatur?
-              </p>
-            </p>
+              </div>
+            </div>
             <Link to="/">
               <button className="btn">Learn More</button>
             </Link>
