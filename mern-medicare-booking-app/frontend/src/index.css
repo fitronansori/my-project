@@ -34,7 +34,7 @@
 
 @layer components {
   .container {
-    @apply max-w-full lg:w-[1440px] px-5 mx-auto;
+    @apply max-w-full xl:w-[1440px] px-5 mx-auto;
   }
 
   .header {
