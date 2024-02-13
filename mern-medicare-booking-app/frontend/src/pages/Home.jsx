@@ -4,6 +4,7 @@ import Feature from "../components/Feature/Feature";
 import Hero from "../components/Hero/Hero";
 import OurServices from "../components/Services/OurServices";
 import Services from "../components/Services/Services";
+import Testimonial from "../components/Testimonial/Testimonial";
 import About from "../components/about/About";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
       <Feature />
       <OurDoctors />
       <Faq />
+      <Testimonial />
     </>
   );
 };
