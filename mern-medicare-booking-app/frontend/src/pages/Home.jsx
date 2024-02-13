@@ -1,4 +1,5 @@
 import OurDoctors from "../components/Doctors/OurDoctors";
+import Faq from "../components/Faq/Faq";
 import Feature from "../components/Feature/Feature";
 import Hero from "../components/Hero/Hero";
 import OurServices from "../components/Services/OurServices";
@@ -14,6 +15,7 @@ const Home = () => {
       <OurServices />
       <Feature />
       <OurDoctors />
+      <Faq />
     </>
   );
 };
