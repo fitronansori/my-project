@@ -1,4 +1,5 @@
 import DoctorTab from "../../components/Doctors/DoctorTab";
+import SidePanel from "../../components/Doctors/SidePanel";
 
 // File
 import doctorImg from "../../assets/images/doctor-img01.png";
@@ -42,6 +43,10 @@ const DoctorDetails = () => {
             </div>
 
             <DoctorTab />
+          </div>
+
+          <div>
+            <SidePanel />
           </div>
         </div>
       </div>
