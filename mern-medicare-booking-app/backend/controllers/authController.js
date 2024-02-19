@@ -39,7 +39,7 @@ const register = async (req, res) => {
     }
 
     if (role === "doctor") {
-      user = new User({
+      user = new Doctor({
         name,
         email,
         password: hashedPassword,
@@ -48,6 +48,7 @@ const register = async (req, res) => {
         photo,
       });
     }
+
     await user.save(); // save user to db
 
     res.status(201).json({ message: "User created successfully" });
