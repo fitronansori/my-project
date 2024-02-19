@@ -11,6 +11,7 @@ const port = process.env.PORT || 1007;
 
 // routes import
 import authRoutes  from './routes/auth.js';
+import userRoutes from './routes/user.js';
 
 const app = express(); // create express app
 
@@ -31,6 +32,9 @@ dotenv.config();
 // routes
 // auth routes
 app.use('/api/v1/auth', authRoutes);
+
+// user routes
+app.use('/api/v1/users', userRoutes);
 
 
 // listen to the server
