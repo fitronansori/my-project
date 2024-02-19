@@ -9,6 +9,9 @@ import { connectDB } from './config/dbConfig.js';
 // port
 const port = process.env.PORT || 1007;
 
+// routes import
+import authRoutes  from './routes/auth.js';
+
 const app = express(); // create express app
 
 const corsOptions = {
@@ -26,9 +29,8 @@ dotenv.config();
 
 
 // routes
-app.get('/api/v1', (req, res) => {
-    res.send('Hello World!');
-});
+// auth routes
+app.use('/api/v1/auth', authRoutes);
 
 
 // listen to the server
