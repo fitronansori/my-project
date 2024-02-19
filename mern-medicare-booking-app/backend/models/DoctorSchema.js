@@ -4,40 +4,40 @@ const DoctorSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
-  
+
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  
+
   name: {
     type: String,
-    required: true
+    required: true,
   },
-  
+
   phone: {
-    type: Number
+    type: Number,
   },
-  
+
   photo: {
-    type: String
+    type: String,
   },
 
   ticketPrice: {
-    type: Number
+    type: Number,
   },
-  
+
   role: {
     type: String,
   },
 
   // Fields for doctors only
   specialization: {
-    type: String
+    type: String,
   },
-  
+
   qualifications: {
     type: Array,
   },
@@ -48,19 +48,19 @@ const DoctorSchema = new mongoose.Schema({
 
   bio: {
     type: String,
-    maxLength: 50
+    maxLength: 50,
   },
-  
+
   about: {
-    type: String
+    type: String,
   },
-  
+
   timeSlots: {
-    type: Array
+    type: Array,
   },
-  
+
   reviews: [{ type: mongoose.Types.ObjectId, ref: "Review" }],
-  
+
   averageRating: {
     type: Number,
     default: 0,

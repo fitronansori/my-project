@@ -96,7 +96,7 @@ const login = async (req, res) => {
     // set token in cookie
     res.cookie("token", token, {
       httpOnly: true,
-      // secure: true, // only works on https
+      // secure: true,
       sameSite: "none",
     });
 

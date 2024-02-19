@@ -1,0 +1,32 @@
+import express from "express";
+
+// user controller
+import {
+  getAllDoctors,
+  getSingleDoctor,
+  updateDoctor,
+  deleteDoctor,
+  queryDoctor,
+} from "../controllers/doctorController.js";
+
+import { authenicateUser, restrictTo } from "../middleware/authMiddleware.js";
+
+const router = express.Router();
+
+router.get("/", getAllDoctors);
+router.get("/search", queryDoctor);
+router.get("/:id", getSingleDoctor);
+router.put(
+  "/:id",
+  authenicateUser,
+  restrictTo(["doctor", "admin"]),
+  updateDoctor
+);
+router.delete(
+  "/:id",
+  authenicateUser,
+  restrictTo(["patient", "admin"]),
+  deleteDoctor
+);
+
+export default router;
