@@ -30,7 +30,7 @@ router.put(
 router.delete(
   "/:id",
   authenicateUser,
-  restrictTo(["patient", "admin"]),
+  restrictTo(["doctor", "admin"]),
   deleteDoctor
 );
 
