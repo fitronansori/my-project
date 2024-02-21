@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   role: null,
+  isLoggedIn: false,
 };
 
 // Load state from localStorage
@@ -18,7 +19,7 @@ export const authSlice = createSlice({
     login: (state, action) => {
       state.user = action.payload.user;
       state.role = action.payload.role;
-
+      state.isLoggedIn = true;
       // Save state to localStorage
       localStorage.setItem("authState", JSON.stringify(state));
     },
@@ -26,7 +27,7 @@ export const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.role = null;
-
+      state.isLoggedIn = false;
       // clear localStorage
       localStorage.removeItem("authState");
     },

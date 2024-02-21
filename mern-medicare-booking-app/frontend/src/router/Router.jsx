@@ -10,6 +10,7 @@ import {
   DoctorDetails,
 } from "../pages";
 import App from "../App";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -44,10 +45,18 @@ export const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />,
+    element: (
+      <ProtectedRoute>
+        <Login />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/register",
-    element: <SignUp />,
+    element: (
+      <ProtectedRoute>
+        <SignUp />
+      </ProtectedRoute>
+    ),
   },
 ]);
