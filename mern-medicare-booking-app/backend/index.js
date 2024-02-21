@@ -18,15 +18,15 @@ import reviewRoutes from "./routes/review.js";
 const app = express(); // create express app
 
 const corsOptions = {
-  origin: true,
+  origin: "http://localhost:5173",
   credentials: true,
   optionSuccessStatus: 200,
 };
 
 // middlewares
+app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(cookieParser());
 
 dotenv.config();
 

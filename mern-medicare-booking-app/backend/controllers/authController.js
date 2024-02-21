@@ -94,11 +94,7 @@ const login = async (req, res) => {
     const { password: userPassword, role, appointments, ...others } = user._doc;
 
     // set token in cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      // secure: true,
-      sameSite: "none",
-    });
+    res.cookie("token", token);
 
     res
       .status(200)
