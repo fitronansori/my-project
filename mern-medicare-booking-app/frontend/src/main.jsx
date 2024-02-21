@@ -16,10 +16,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <ToastContainer
         theme="dark"
-        position="top-right"
         autoClose={3000}
         closeOnClick
         pauseOnHover
+        position={"bottom-left"}
       />
       <RouterProvider router={router} />
     </Provider>

@@ -86,8 +86,6 @@ const Header = () => {
                     />
                   </figure>
                 </Link>
-
-                <h2 className="text-base font-bold">{user?.name}</h2>
               </div>
             </div>
           ) : (
