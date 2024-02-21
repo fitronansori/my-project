@@ -8,15 +8,20 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { router } from "./router/Router";
 
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ToastContainer
-      theme="dark"
-      position="top-right"
-      autoClose={3000}
-      closeOnClick
-      pauseOnHover
-    />
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <ToastContainer
+        theme="dark"
+        position="top-right"
+        autoClose={3000}
+        closeOnClick
+        pauseOnHover
+      />
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

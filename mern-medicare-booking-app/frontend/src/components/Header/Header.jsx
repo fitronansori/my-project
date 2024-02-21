@@ -4,12 +4,15 @@ import { NavLink, Link } from "react-router-dom";
 
 // File Import
 import Logo from "../../assets/images/logo.png";
-import userImg from "../../assets/images/avatar-icon.png";
 import navLinks from "../../constants/navbar";
+
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+
+  const { user, role } = useSelector((state) => state.auth);
 
   const handleStickyHeader = () => {
     window.addEventListener("scroll", () => {
@@ -67,25 +70,37 @@ const Header = () => {
           </nav>
 
           {/* CTA */}
-          <div className="flex items-center gap-4">
-            <div className="hidden">
-              <Link to="/">
-                <figure className="w-[35px] h-[35px] rounded-full">
-                  <img src={userImg} alt="" className="w-full rounded-full" />
-                </figure>
-              </Link>
-            </div>
+          {user ? (
+            <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center gap-2">
+                <Link
+                  to={`/${
+                    role === "doctor" ? "doctor/profile/me" : "users/profile/me"
+                  }`}
+                >
+                  <figure className="w-[35px] h-[35px] rounded-full">
+                    <img
+                      src={user?.photo}
+                      alt=""
+                      className="w-full rounded-full"
+                    />
+                  </figure>
+                </Link>
 
+                <h2 className="text-base font-bold">{user?.name}</h2>
+              </div>
+            </div>
+          ) : (
             <Link to="/login">
               <button className="bg-primaryColor text-white py-2 px-6 font-[600] h-[44px] flex items-center justify-center rounded-[50px]">
                 Login
               </button>
             </Link>
+          )}
 
-            {/* Mobile Menu */}
-            <div className="mobile-menu md:hidden" onClick={toggleMenu}>
-              <BiMenu className="w-6 h-6 cursor-pointer" />
-            </div>
+          {/* Mobile Menu */}
+          <div className="mobile-menu md:hidden" onClick={toggleMenu}>
+            <BiMenu className="w-6 h-6 cursor-pointer" />
           </div>
         </div>
       </div>

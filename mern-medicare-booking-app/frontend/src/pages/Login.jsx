@@ -1,20 +1,60 @@
 import { useState } from "react";
 import Header from "../components/Header/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { BASE_URL } from "../utils/config";
+import HashLoader from "react-spinners/HashLoader";
+import { useDispatch } from "react-redux";
+import { login } from "../app/features/authSlice";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  const navigate = useNavigate();
+  // const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    setLoading(true);
+
+    try {
+      const response = await axios.post(`${BASE_URL}/auth/login`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+
+      const result = response.data;
+
+      dispatch(
+        login({
+          user: result.data,
+          role: result.role,
+        })
+      );
+
+      toast.success("Login successfully!");
+
+      setLoading(false);
+
+      navigate("/home");
+    } catch (error) {
+      toast(error.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -26,7 +66,7 @@ const Login = () => {
             Hello there! <span className="text-primaryColor">Welcome</span>
           </h2>
 
-          <form className="py-4 md:py-0">
+          <form className="py-4 md:py-0" onSubmit={handleSubmit}>
             <div className="mb-5">
               <input
                 type="email"
@@ -55,11 +95,11 @@ const Login = () => {
 
             <div className="mt-7">
               <button
+                disabled={loading && true}
                 type="submit"
-                onClick={handleSubmit}
                 className="w-full bg-primaryColor text-white text-[22px] leading-[30px] rounded-lg px-4 py-3"
               >
-                Login
+                {loading ? <HashLoader size={35} color="#ffffff" /> : "Login"}
               </button>
             </div>
 
