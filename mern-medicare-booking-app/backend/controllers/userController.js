@@ -1,4 +1,6 @@
 import User from "../models/UserSchema.js";
+import Booking from "../models/BookingSchema.js";
+import Doctor from "../models/DoctorSchema.js";
 
 const getAllUsers = async (req, res) => {
   try {
@@ -55,4 +57,48 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { getAllUsers, getSingleUser, updateUser, deleteUser };
+const getUserProfile = async (req, res) => {
+  const userId = req.userId;
+
+  try {
+    const user = await User.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User profile getting", data: user });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error, Try again" });
+  }
+};
+
+const getMyAppointments = async (req, res) => {
+  try {
+    // get retrieve appointments from booking
+    const bookings = await Booking.find({ user: req.userId });
+
+    // extract doctor ids from bookings
+    const doctorIds = bookings.map((booking) => booking.doctor.id);
+
+    // retrieve doctors from doctor ids
+    const doctors = await Doctor.find({ _id: { $in: doctorIds } }).select(
+      -"password"
+    );
+
+    res.status(200).json({ message: "My appointments", data: doctors });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error, Try again" });
+  }
+};
+
+export {
+  getAllUsers,
+  getSingleUser,
+  updateUser,
+  deleteUser,
+  getUserProfile,
+  getMyAppointments,
+};

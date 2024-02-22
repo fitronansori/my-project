@@ -6,6 +6,8 @@ import {
   getSingleUser,
   updateUser,
   deleteUser,
+  getUserProfile,
+  getMyAppointments,
 } from "../controllers/userController.js";
 import { authenicateUser, restrictTo } from "../middleware/authMiddleware.js";
 
@@ -24,6 +26,21 @@ router.put(
   restrictTo(["patient", "admin"]),
   updateUser
 );
+
 router.delete("/:id", authenicateUser, restrictTo(["patient"]), deleteUser);
+
+router.get(
+  "/profile/me",
+  authenicateUser,
+  restrictTo(["patient", "admin"]),
+  getUserProfile
+);
+
+router.get(
+  "/appointments/my-appoinments",
+  authenicateUser,
+  restrictTo(["patient", "admin"]),
+  getMyAppointments
+);
 
 export default router;
