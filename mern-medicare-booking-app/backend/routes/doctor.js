@@ -7,6 +7,7 @@ import {
   updateDoctor,
   deleteDoctor,
   queryDoctor,
+  getDoctorProfile,
 } from "../controllers/doctorController.js";
 
 import { authenicateUser, restrictTo } from "../middleware/authMiddleware.js";
@@ -32,6 +33,13 @@ router.delete(
   authenicateUser,
   restrictTo(["doctor", "admin"]),
   deleteDoctor
+);
+
+router.get(
+  "/profile/me",
+  authenicateUser,
+  restrictTo(["doctor", "admin"]),
+  getDoctorProfile
 );
 
 export default router;

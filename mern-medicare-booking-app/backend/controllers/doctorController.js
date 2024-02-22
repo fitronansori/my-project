@@ -1,3 +1,4 @@
+import Booking from "../models/BookingSchema.js";
 import Doctor from "../models/DoctorSchema.js";
 
 const getAllDoctors = async (req, res) => {
@@ -85,10 +86,31 @@ const queryDoctor = async (req, res) => {
   }
 };
 
+const getDoctorProfile = async (req, res) => {
+  const doctorId = req.userId;
+  console.log(doctorId);
+
+  try {
+    const doctor = await Doctor.findById(doctorId).select("-password");
+
+    if (!doctor) {
+      return res.status(404).json({ message: "Doctor not found" });
+    }
+
+    const appointments = await Booking.find({ doctor: doctorId });
+
+    res.status(200).json({ message: "Doctor profile getting", data: {doctor, appointments}});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error, Try again" });
+  }
+};
+
 export {
   getAllDoctors,
   getSingleDoctor,
   updateDoctor,
   deleteDoctor,
   queryDoctor,
+  getDoctorProfile,
 };
