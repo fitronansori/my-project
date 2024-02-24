@@ -75,7 +75,9 @@ const Header = () => {
               <div className="flex items-center justify-center gap-2">
                 <Link
                   to={`/${
-                    role === "doctor" ? "doctor/profile/me" : "users/profile/me"
+                    role === "doctor"
+                      ? "dashboard/doctor/profile/me"
+                      : "dashboard/user/profile/me"
                   }`}
                 >
                   <figure className="w-[35px] h-[35px] rounded-full">
@@ -87,6 +89,11 @@ const Header = () => {
                   </figure>
                 </Link>
               </div>
+
+              {/* Mobile Menu */}
+              <div className="mobile-menu md:hidden" onClick={toggleMenu}>
+                <BiMenu className="w-6 h-6 cursor-pointer" />
+              </div>
             </div>
           ) : (
             <Link to="/login">
@@ -95,11 +102,6 @@ const Header = () => {
               </button>
             </Link>
           )}
-
-          {/* Mobile Menu */}
-          <div className="mobile-menu md:hidden" onClick={toggleMenu}>
-            <BiMenu className="w-6 h-6 cursor-pointer" />
-          </div>
         </div>
       </div>
     </header>

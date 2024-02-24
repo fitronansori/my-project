@@ -43,14 +43,15 @@ const Login = () => {
         login({
           user: result.data,
           role: result.role,
-        })
+        }),
       );
 
       toast.success("Login successfully!");
 
       setLoading(false);
 
-      navigate("/home");
+      // navigate to home and reload the page
+      navigate("/");
     } catch (error) {
       toast(error.message);
       setLoading(false);

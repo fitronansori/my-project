@@ -10,7 +10,10 @@ import {
   DoctorDetails,
 } from "../pages";
 import App from "../App";
+import DashboardLayout from "../layout/DashboardLayout";
+import { DoctorDashboard, UserDashboard } from "../dashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRouteDasboard from "./ProtectedRouteDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -58,5 +61,27 @@ export const router = createBrowserRouter([
         <SignUp />
       </ProtectedRoute>
     ),
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "user/profile/me",
+        element: (
+          <ProtectedRouteDasboard allowedRoles={["patient", "admin"]}>
+            <UserDashboard />
+          </ProtectedRouteDasboard>
+        ),
+      },
+      {
+        path: "doctor/profile/me",
+        element: (
+          <ProtectedRouteDasboard allowedRoles={["doctor", "admin"]}>
+            <DoctorDashboard />
+          </ProtectedRouteDasboard>
+        ),
+      },
+    ],
   },
 ]);
