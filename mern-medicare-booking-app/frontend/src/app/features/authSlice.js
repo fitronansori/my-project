@@ -13,6 +13,12 @@ const initialStateWithLocalStorage = savedState
   ? JSON.parse(savedState)
   : initialState;
 
+// Set data dalam localStorage dengan waktu kadaluarsa 30 hari
+const expirationDate = new Date();
+expirationDate.setDate(expirationDate.getDate() + 30);
+localStorage.setItem("authState", JSON.stringify(initialStateWithLocalStorage));
+localStorage.setItem("expirationDate", expirationDate.toISOString());
+
 export const authSlice = createSlice({
   name: "auth",
   initialState: initialStateWithLocalStorage,
