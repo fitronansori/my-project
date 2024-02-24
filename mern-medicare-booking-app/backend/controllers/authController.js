@@ -94,7 +94,9 @@ const login = async (req, res) => {
     const { password: userPassword, role, appointments, ...others } = user._doc;
 
     // set token in cookie
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+    });
 
     res
       .status(200)
