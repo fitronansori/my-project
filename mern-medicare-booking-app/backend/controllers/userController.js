@@ -61,7 +61,7 @@ const getUserProfile = async (req, res) => {
   const userId = req.userId;
 
   try {
-    const user = await User.findById(userId).select("-password");
+    const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -84,7 +84,7 @@ const getMyAppointments = async (req, res) => {
 
     // retrieve doctors from doctor ids
     const doctors = await Doctor.find({ _id: { $in: doctorIds } }).select(
-      -"password"
+      -"password",
     );
 
     res.status(200).json({ message: "My appointments", data: doctors });
