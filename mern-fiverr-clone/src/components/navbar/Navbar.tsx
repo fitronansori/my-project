@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // ui
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 
-interface User {
-  id: number;
-  name: string;
-  isSeller: boolean;
+enum AuthPath {
+  LOGIN = "/auth/login",
+  REGISTER = "/auth/register",
 }
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const isActive = () => {
@@ -28,42 +30,53 @@ const Navbar = () => {
     setOpen(!open);
   };
 
-  const currentUsers: User = {
+  const currentUsers = {
     id: 1,
     name: "John Doe",
     isSeller: true,
   };
 
-  const user = true;
+  const user = false;
 
   return (
     <header
-      className={`${active ? "bg-background text-foreground" : "bg-primary"}
+      className={`${
+        active ||
+        (pathname !== "/" &&
+          pathname !== AuthPath.LOGIN &&
+          pathname !== AuthPath.REGISTER)
+          ? "bg-background text-foreground"
+          : "bg-primary text-primary-foreground"
+      }
       transition-all duration-300 ease-in-out sticky top-0 left-0 w-full z-50 shadow-md
       `}
     >
       <div className="container py-4 flex items-center justify-between">
         <div className="text-4xl font-bold">
-          <span>fiverr</span>
-          <span className="text-[#1dbf73]">.</span>
+          <Link to={"/"}>
+            <span>fiverr</span>
+            <span className="text-[#1dbf73]">.</span>
+          </Link>
         </div>
 
         <nav>
-          <ul className="flex items-center gap-6 font-montserrat cursor-pointer">
-            <li>Fiverr Business</li>
-            <li>Explore</li>
-            <li>English</li>
-            {!user && <li>Sign in</li>}
-            {!currentUsers?.isSeller && <li>Become a Seller</li>}
-            {!currentUsers ? (
-              <li>
+          <div className="flex items-center gap-6 font-montserrat cursor-pointer">
+            <Link to={"/"}>Fiverr Business</Link>
+            <Link to={"/"}>Explore</Link>
+            <Link to={"/"}>English</Link>
+            {!user && <Link to={"/auth/login"}>Sign in</Link>}
+            {!currentUsers?.isSeller && <Link to={"/"}>Become a Seller</Link>}
+            {!currentUsers && (
+              <div>
                 {active ? (
                   <Button variant={"default"}>Join</Button>
                 ) : (
                   <Button variant={"outline"}>Join</Button>
                 )}
-              </li>
-            ) : (
+              </div>
+            )}
+
+            {currentUsers && (
               <div className="relative">
                 <div
                   className="flex items-center gap-[10px]"
@@ -82,28 +95,86 @@ const Navbar = () => {
                   <ul className="w-[150px] absolute top-[55px] right-0 flex flex-col gap-3 p-5 shadow-md bg-white text-foreground cursor-pointer">
                     {currentUsers?.isSeller && (
                       <>
-                        <li className="hover:opacity-80">Gigs</li>
-                        <li className="hover:opacity-80">Add New Gigs</li>
+                        <Link
+                          to={"/mygigs"}
+                          className="hover:opacity-80"
+                          onClick={handleOpen}
+                        >
+                          Gigs
+                        </Link>
+                        <Link
+                          to={"/addgig"}
+                          className="hover:opacity-80"
+                          onClick={handleOpen}
+                        >
+                          Add New Gigs
+                        </Link>
                       </>
                     )}
-                    <li className="hover:opacity-80">Orders</li>
-                    <li className="hover:opacity-80">Messages</li>
-                    <li className="hover:opacity-80">Logout</li>
+                    <Link
+                      to={"/orders"}
+                      className="hover:opacity-80"
+                      onClick={handleOpen}
+                    >
+                      Orders
+                    </Link>
+                    <Link
+                      to={"/messages"}
+                      className="hover:opacity-80"
+                      onClick={handleOpen}
+                    >
+                      Messages
+                    </Link>
+                    <Link
+                      to={"/"}
+                      className="hover:opacity-80"
+                      onClick={handleOpen}
+                    >
+                      Logout
+                    </Link>
                   </ul>
                 )}
               </div>
             )}
-          </ul>
+          </div>
         </nav>
       </div>
 
       <div>
-        {active && (
+        {(active ||
+          (pathname !== "/" &&
+            pathname !== AuthPath.LOGIN &&
+            pathname !== AuthPath.REGISTER)) && (
           <>
             <Separator />
             <div className="container py-[6px] flex justify-between font-montserrat text-gray-400">
-              <span>1212</span>
-              <span>1212</span>
+              <Link className="hover:text-foreground" to="/">
+                Graphics & Design
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Video & Animation
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Writing & Translation
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                AI Services
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Digital Marketing
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Music & Audio
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Programming & Tech
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Business
+              </Link>
+              <Link className="hover:text-foreground" to="/">
+                Lifestyle
+              </Link>
             </div>
           </>
         )}
