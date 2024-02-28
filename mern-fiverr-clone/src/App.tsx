@@ -1,9 +1,9 @@
-import Navbar from "./components/navbar/Navbar";
+import Layout from "./layout/Layout";
 
 const App = () => {
   return (
     <>
-      <Navbar />
+      <Layout />
     </>
   );
 };
