@@ -8,10 +8,10 @@ import { IoSearch } from "react-icons/io5";
 
 const Featured = () => {
   return (
-    <div className="h-[600px] w-full bg-primary text-primary-foreground">
-      <div className="container flex items-center">
-        <div className="flex-1 flex flex-col gap-8">
-          <h1 className="text-[50px] font-semibold">
+    <div className="lg:h-[600px] w-full bg-primary text-primary-foreground">
+      <div className="container py-5 md:pt-0 flex flex-col lg:flex-row gap-8">
+        <div className="left lg:flex-1 flex flex-col justify-center gap-8">
+          <h1 className="text-[40px] lg:text-[50px] font-semibold">
             Find the perfect freelance services for your business.
           </h1>
 
@@ -31,17 +31,17 @@ const Featured = () => {
               Search
             </Button>
           </div>
-          <div className="flex">
-            <p className="pr-2">Popular:</p>
-            <div className="space-x-3 text-[14px]">
+
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="text-center flex justify-center items-center">
+              <p className="font-semibold">Popular Tag:</p>
+            </div>
+            <div className="text-[14px] flex flex-wrap justify-center gap-4">
               <span className="outline outline-1 py-1 px-2 rounded-xl hover:bg-primary-foreground hover:text-foreground transition-all duration-300 ease-in-out hover:outline-none cursor-pointer">
                 Web Design
               </span>
               <span className="outline outline-1 py-1 px-2 rounded-xl hover:bg-primary-foreground hover:text-foreground transition-all duration-300 ease-in-out hover:outline-none cursor-pointer">
                 Mobile Development
-              </span>
-              <span className="outline outline-1 py-1 px-2  rounded-xl hover:bg-primary-foreground hover:text-foreground transition-all duration-300 ease-in-out hover:outline-none cursor-pointer">
-                SEO
               </span>
               <span className="outline outline-1 py-1 px-2  rounded-xl hover:bg-primary-foreground hover:text-foreground transition-all duration-300 ease-in-out hover:outline-none cursor-pointer">
                 Logo Design
@@ -52,8 +52,13 @@ const Featured = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1">
-          <img src={featuredImg} alt="" />
+
+        <div className="right hidden lg:block lg:flex-1">
+          <img
+            src={featuredImg}
+            alt=""
+            className="w-full h-[600px] object-contain"
+          />
         </div>
       </div>
     </div>

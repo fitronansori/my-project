@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+// components
+import MobileMenu from "./MobileMenu";
+
 // ui
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+
+//icons
+import { RiMenu3Fill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
 
 enum AuthPath {
   LOGIN = "/auth/login",
@@ -13,6 +20,7 @@ enum AuthPath {
 const Navbar = () => {
   const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const { pathname } = useLocation();
 
@@ -28,6 +36,10 @@ const Navbar = () => {
 
   const handleOpen = () => {
     setOpen(!open);
+  };
+
+  const handleMobileOpen = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   const currentUsers = {
@@ -51,15 +63,41 @@ const Navbar = () => {
       transition-all duration-300 ease-in-out sticky top-0 left-0 w-full z-50 shadow-md
       `}
     >
-      <div className="container py-4 flex items-center justify-between">
-        <div className="text-4xl font-bold">
+      <div className="relative container py-4 flex items-center justify-between">
+        <div className="text-3xl md:text-4xl font-bold">
           <Link to={"/"}>
             <span>fiverr</span>
             <span className="text-[#1dbf73]">.</span>
           </Link>
         </div>
 
-        <nav>
+        <div className="sm:hidden">
+          {!mobileOpen ? (
+            <RiMenu3Fill
+              className="font-bold w-6 h-6 cursor-pointer"
+              onClick={handleMobileOpen}
+            />
+          ) : (
+            <IoClose
+              className="font-bold w-8 h-8 cursor-pointer"
+              onClick={handleMobileOpen}
+            />
+          )}
+        </div>
+
+        {mobileOpen && (
+          <div className="bg-background h-screen w-5/6 absolute top-[68px] right-0 shadow-md">
+            <MobileMenu
+              user={user}
+              currentUsers={currentUsers}
+              open={open}
+              handleOpen={handleOpen}
+              handleMobileOpen={handleMobileOpen}
+            />
+          </div>
+        )}
+
+        <nav className="hidden">
           <div className="flex items-center gap-6 font-montserrat cursor-pointer">
             <Link to={"/"}>Fiverr Business</Link>
             <Link to={"/"}>Explore</Link>
@@ -140,7 +178,7 @@ const Navbar = () => {
         </nav>
       </div>
 
-      <div>
+      <div className="hidden lg:block">
         {(active ||
           (pathname !== "/" &&
             pathname !== AuthPath.LOGIN &&

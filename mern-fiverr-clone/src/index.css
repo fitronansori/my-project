@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-prev:before,
+.slick-next:before {
+  color: hsl(142.1, 76.2%, 36.3%) !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
