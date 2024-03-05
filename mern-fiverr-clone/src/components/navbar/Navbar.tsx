@@ -48,7 +48,7 @@ const Navbar = () => {
     isSeller: true,
   };
 
-  const user = false;
+  const user = true;
 
   return (
     <header
@@ -97,7 +97,7 @@ const Navbar = () => {
           </div>
         )}
 
-        <nav className="hidden">
+        <nav className="hidden lg:block">
           <div className="flex items-center gap-6 font-montserrat cursor-pointer">
             <Link to={"/"}>Fiverr Business</Link>
             <Link to={"/"}>Explore</Link>
