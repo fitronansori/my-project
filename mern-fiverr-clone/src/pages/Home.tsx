@@ -1,5 +1,5 @@
 import Featured from "@/components/featured/Featured";
-// import Explore from "@/components/features/Explore";
+import Explore from "@/components/features/Explore";
 import Features from "@/components/features/Features";
 import FeaturesDark from "@/components/features/FeaturesDark";
 import CategorySlider from "@/components/slider/CategorySliders";
@@ -13,7 +13,7 @@ const Home = () => {
       <TrustedBy />
       <CategorySlider />
       <Features />
-      {/* <Explore /> */}
+      <Explore />
       <FeaturesDark />
       <ProductSliders />
     </>
